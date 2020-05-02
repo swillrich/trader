@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-jupyter-image
+    ports:
+      - 8888:8888
+    container_name: my_jupyter
+    volumes:
+      - ./src/:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    networks:
+      - jupyter-nw
+networks:
+    jupyter-nw:
